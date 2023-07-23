@@ -1,0 +1,21 @@
+<!doctype html>
+<html>
+<head>
+  <title>{% block title %}{% endblock %}</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+{% if user.is_authenticated %}
+    {% include 'navbar.html' %}
+    {% block content %}
+    {% endblock %}
+
+{% else %}
+
+    {% include 'login.html' %}
+
+{% endif %}
+</body>
+</html>
