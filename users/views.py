@@ -19,6 +19,8 @@ def index(request):
     else:
         return render(request, 'index.html', {})
 
+def login_user(request):
+    return redirect('index')
 
 def logout_user(request):
     logout(request)
