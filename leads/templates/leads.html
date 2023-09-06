@@ -18,18 +18,30 @@
                         </tr>
                     </thead>
                     <tbody>
+<<<<<<< HEAD
                         {% for lead in leads %}
+=======
+                        {% for lead in Lead %}
+>>>>>>> e039bc4e4e6d77f5b95067663c9e0c973901d6bc
                         <tr>
                             <td class="border px-4 py-2">{{ lead.first_name }} {{ lead.last_name }}</td>
                             <td class="border px-4 py-2">{{ lead.product }}</td>
                             <td class="border px-4 py-2">{{ lead.email }}</td>
                             <td class="border px-4 py-2">{{ lead.phoned }}</td>
                             <td class="border px-4 py-2">{{ lead.contact_date }}</td>
+<<<<<<< HEAD
                             {% comment %} <td class="border px-4 py-2">
                                 <a href="{% url 'lead_detail' lead.id %}" class="text-blue-600 hover:underline mr-2">View</a>
                                 <a href="{% url 'lead_edit' lead.id %}" class="text-green-600 hover:underline mr-2">Edit</a>
                                 <a href="{% url 'lead_delete' lead.id %}" class="text-red-600 hover:underline">Delete</a>
                             </td> {% endcomment %}
+=======
+                            <td class="border px-4 py-2">
+                                <a href="{% url 'lead_detail' lead.id %}" class="text-blue-600 hover:underline mr-2">View</a>
+                                <a href="{% url 'lead_edit' lead.id %}" class="text-green-600 hover:underline mr-2">Edit</a>
+                                <a href="{% url 'lead_delete' lead.id %}" class="text-red-600 hover:underline">Delete</a>
+                            </td>
+>>>>>>> e039bc4e4e6d77f5b95067663c9e0c973901d6bc
                         </tr>
                         {% endfor %}
                     </tbody>
