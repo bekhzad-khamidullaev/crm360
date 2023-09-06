@@ -3,7 +3,10 @@
     <div class="relative flex h-16 items-center justify-between">
       <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
         <div class="flex flex-shrink-0 items-center text-white">
-          <a href="{% url 'index' %}">CRM360</a>
+          <a href="{% url 'kanban' %}" class="flex items-center mb-2 text-2xl font-bold text-gray-900 dark:text-white">
+            <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
+            CRM 360
+          </a>
         </div>
         <div class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
@@ -11,6 +14,8 @@
             <a href="{% url 'contacts' %}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contacts</a>
             <a href="{% url 'organizations' %}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Organizations</a>
             <a href="{% url 'deals' %}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Deals</a>
+            <a href="{% url 'products' %}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Products</a>
+
           </div>
         </div>
       </div>
