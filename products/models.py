@@ -7,7 +7,6 @@ class ProductCategory(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-<<<<<<< HEAD
     def __str__(self):
         return self.name
 
@@ -29,11 +28,3 @@ class Products(models.Model):
 
     class Meta:
         ordering = ['name']
-=======
-class Product(models.Model):
-    product_id = models.PositiveIntegerField()
-    product_name = models.CharField(max_length=100)
-
-    def __str__(self):
-        return f'{self.product_id} {self.product_name}'
->>>>>>> e039bc4e4e6d77f5b95067663c9e0c973901d6bc
