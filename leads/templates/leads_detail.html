@@ -1,5 +1,4 @@
 {% extends 'index.html' %}
-
 {% block content %}
 <div class="py-10">
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -19,15 +18,15 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="border px-4 py-2">{{ lead.first_name }} {{ lead.last_name }}</td>
+                            <td class="border px-4 py-2">{{ leads.first_name }} {{ leads.last_name }}</td>
                             <td class="border px-4 py-2">{{ lead.product }}</td>
-                            <td class="border px-4 py-2">{{ lead.email }}</td>
-                            <td class="border px-4 py-2">{{ lead.phoned }}</td>
-                            <td class="border px-4 py-2">{{ lead.contact_date }}</td>
+                            <td class="border px-4 py-2">{{ leads.email }}</td>
+                            <td class="border px-4 py-2">{{ leads.phoned }}</td>
+                            <td class="border px-4 py-2">{{ leads.contact_date }}</td>
                             {% comment %} <td class="border px-4 py-2">
-                                <a href="{% url 'lead_detail' lead.id %}" class="text-blue-600 hover:underline mr-2">View</a>
-                                <a href="{% url 'lead_edit' lead.id %}" class="text-green-600 hover:underline mr-2">Edit</a>
-                                <a href="{% url 'lead_delete' lead.id %}" class="text-red-600 hover:underline">Delete</a>
+                                <a href="{% url 'lead_detail' leads.id %}" class="text-blue-600 hover:underline mr-2">View</a>
+                                <a href="{% url 'lead_edit' leads.id %}" class="text-green-600 hover:underline mr-2">Edit</a>
+                                <a href="{% url 'lead_delete' leads.id %}" class="text-red-600 hover:underline">Delete</a>
                             </td> {% endcomment %}
                         </tr>
                     </tbody>

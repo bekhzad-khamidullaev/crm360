@@ -24,7 +24,7 @@ class Products(models.Model):
     category = models.ForeignKey(ProductCategory, on_delete=models.SET_NULL, blank=True, null=True)
 
     def __str__(self):
-        return f'{self.name} {self.count}'
+        return f'{self.name}'
 
     class Meta:
         ordering = ['name']
