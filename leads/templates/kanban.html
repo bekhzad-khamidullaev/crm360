@@ -1,0 +1,48 @@
+    <div class="container">
+        <div class="kanban-heading">
+            <strong class="kanban-heading-text bg-tomato py-2 px-4 rounded m-4">Kanban Board</strong>
+        </div>
+        <div class="kanban-board flex justify-between font-sans">
+            <div class="kanban-block" id="todo" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <strong class="bg-fec6d1 p-2 rounded">To Do</strong>
+                <div class="task-button-block">
+                    <button id="task-button" onclick="createTask()" class="bg-white border-black border rounded w-full py-2 px-6 my-2">Create new task</button>
+                </div>
+                <div class="task" id="task1" draggable="true" ondragstart="drag(event)">
+                    <span>Task 1</span>
+                </div>
+                <!-- Add similar task elements here -->
+            </div>
+            <div class="kanban-block" id="inprogress" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <strong class="bg-ffaf00 p-2 rounded">In Progress</strong>
+            </div>
+            <div class="kanban-block" id="done" ondrop="drop(event)" ondragover="allowDrop(event)">
+                <strong class="bg-018b01 p-2 rounded">Done</strong>
+            </div>
+            <div class="create-new-task-block hidden bg-ffaf00 flex flex-col w-2/3">
+                <strong class="p-2">New Task</strong>
+                <div class="form-row my-2">
+                    <label class="form-row-label w-1/6 pr-2 border border-black rounded-l">Task</label>
+                    <input class="form-row-input border border-black rounded-r w-5/6" type="text" name="task-name" id="task-name">
+                </div>
+                <div class="form-row my-2">
+                    <label class="form-row-label w-1/6 pr-2 border border-black rounded-l">Description</label>
+                    <textarea class="form-row-input border border-black rounded-r w-5/6" name="task-description" id="task-description" cols="70" rows="10"></textarea>
+                </div>
+                <div class="form-row my-2">
+                    <label class="form-row-label w-1/6 pr-2 border border-black rounded-l">Status</label>
+                    <select class="form-row-input border border-black rounded-r w-5/6" name="task-status" id="task-status">
+                        <option value="todo">To Do</option>
+                        <option value="inprogress">In Progress</option>
+                        <option value="done">Done</option>
+                    </select>
+                </div>
+                <div class="form-row-buttons my-2">
+                    <button id="edit-button" onclick="editTask()" class="bg-white border border-black rounded w-1/2 py-2 px-6">Edit</button>
+                    <button id="save-button" onclick="saveTask()" class="bg-white border border-black rounded w-1/2 py-2 px-6">Save</button>
+                    <button id="cancel-button" onclick="createTask()" class="bg-white border border-black rounded w-1/2 py-2 px-6">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
