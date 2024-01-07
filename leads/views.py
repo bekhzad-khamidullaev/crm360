@@ -3,7 +3,7 @@ from .models import Lead
 
 def leads(request):
     leads = Lead.objects.all()
-    return render(request, 'leads_table.html', {'leads': leads})
+    return render(request, 'leads_list.html', {'leads': leads})
 
 
 def lead_detail(request, pk):

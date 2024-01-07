@@ -15,16 +15,16 @@
 
 
 </head>
-<body class="bg-gray-300 dark:bg-gray-700">
-{% if user.is_authenticated %}
-    {% include 'navbar.html' %}
-    {% block content %}
-    {% endblock %}
+	<body class="text-neutral-900 dark:text-neutral-300 bg-neutral-200 dark:bg-neutral-800">
+	{% if user.is_authenticated %}
+		{% include 'navbar.html' %}
+		{% block content %}
+		{% endblock %}
 
-{% else %}
+	{% else %}
 
-    {% include 'login_page.html' %}
+		{% include 'login_page.html' %}
 
-{% endif %}
-</body>
+	{% endif %}
+	</body>
 </html>
