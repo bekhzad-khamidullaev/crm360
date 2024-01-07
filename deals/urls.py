@@ -1,7 +1,12 @@
 from django.urls import path
 from . import views
+from .views import *
+
+app_name = 'deal'
 
 urlpatterns = [
-    path('', views.deals, name='deals')
-
+    path('', views.index, name='index'),
+    path('delete/<int:deal_id>/', views.delete_deal, name='delete_deal'),
+    path('update/<int:deal_id>/', views.update_deal, name='update_deal'),
+    path('deals/delete_selected/', views.delete_selected_deals, name='delete_selected_deals'),
 ]
