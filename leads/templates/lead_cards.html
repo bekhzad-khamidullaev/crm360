@@ -1,0 +1,10 @@
+<!-- lead_cards.html -->
+{% for lead in leads %}
+    <div id="lead-{{ lead.lead_id }}" class="bg-white border mb-2 p-2 rounded-md" hx-draggable="true" hx-target=".sortable" hx-swap="true" hx-get="{% url 'get_leads' %}?status={{ lead.status }}" hx-indicator=".sortable">
+        <h3 class="text-lg font-semibold">{{ lead.product_name }}</h3>
+        <p class="text-sm text-gray-500">{{ lead.customer }}</p>
+        <p class="text-sm text-gray-500">{{ lead.email }}</p>
+        <p class="text-sm text-gray-500">{{ lead.source }}</p>
+        <p class="text-sm text-gray-500">{{ lead.contact_date }}</p>
+    </div>
+{% endfor %}

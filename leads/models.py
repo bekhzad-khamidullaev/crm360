@@ -7,7 +7,13 @@ class Lead(models.Model):
     last_name = models.CharField(max_length=50)
     product = models.ForeignKey(Products, on_delete=models.SET_NULL,  null=True)
     phoned = models.BooleanField(default=False)
-    phoned_at = models.DateField(auto_now_add=True)
+    # phoned_at = models.DateField(auto_now_add=True)
+    STATUS_CHOICES = (
+        ('phone', 'Phone'),
+        ('social_network', 'Social Networks'),
+        ('tv', 'Tv'),
+    )
+    source = models.CharField(max_length=200, choices=STATUS_CHOICES, default='Phone')
     email = models.EmailField(max_length=254, blank=True, null=True)
     notes = models.TextField(blank=True, null=True)
     company = models.CharField(max_length=50, blank=True, null=True)
@@ -17,3 +23,4 @@ class Lead(models.Model):
 
     def __str__(self):
         return f'{self.first_name} {self.product}'
+    

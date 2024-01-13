@@ -28,7 +28,7 @@ def index(request):
     if search_title:
         deal = deals.filter(Name__icontains=search_title)
         
-    return render(request, 'deals/index.html', date)
+    return render(request, 'deals.html', date)
 
 def delete_deal(request, deal_id):
     deal = get_object_or_404(Deal, id=deal_id)
@@ -59,4 +59,4 @@ def update_deal(request, deal_id):
     else:
         form = DealForm(instance=deal)
     
-    return render(request, 'deals/index.html', {'form': form})
+    return render(request, 'deals.html', {'form': form})

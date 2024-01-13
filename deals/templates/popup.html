@@ -1,0 +1,53 @@
+<div id="popup1" class="overlay">
+    <div class="popup">
+      <form method="post">
+          {% csrf_token %}
+          <br>
+            <input type="text" placeholder="Name" class="form-control" name="deal_label" value="{{ deal.deal_label }}"><br>
+            <textarea placeholder="Message" class="form-control" name="deal_message">{{ deal_message }}</textarea><br>
+            <input type="date" class="form-control" name="end_date" value="{{ deal.end_date|date:'Y-m-d' }}"><br>
+            <input type="date" class="form-control" name="created_at" value="{{ deal.created_at|date:'Y-m-d' }}"><br>
+            <select class="form-control" name="status">
+                <option value="open" {% if deal.status == 'open' %}selected{% endif %}>Открыта</option>
+                <option value="won" {% if deal.status == 'won' %}selected{% endif %}>Выиграна</option>
+                <option value="lost" {% if deal.status == 'lost' %}selected{% endif %}>Проиграна</option>
+            </select>
+            <input type="text" placeholder="Source" class="form-control" name="source" value="{{ deal.source }}"><br>
+            <input type="text" placeholder="field_1" class="form-contro_l" name="custom_field_1" value="{{ deal.field_1 }}"><br>
+            <input type="text" placeholder="field_2" class="form-contro_2" name="custom_field_2" value="{{ deal.field_2 }}"><br>
+            <span>{{ error }}</span>
+          <button class="btn btn-success text-teal-950" type="submit">Добавить</button>
+      </form>
+      <a class="close" href="#">&times;</a>
+    </div>    
+</div>
+{% for deal in deals %}
+<div id="popup2{{ deal.id }}" class="overlay">
+    <div class="popup">
+        <form method="post" action="{% url 'deal:update_deal' deal.id %}">
+            {% csrf_token %}
+            <br>
+            <input type="text" placeholder="Name" class="form-control" name="deal_label" value="{{ deal.deal_label }}"><br>
+            <textarea placeholder="Message" class="form-control" name="deal_message">{{ deal_message }}</textarea><br>
+            <input type="date" class="form-control" name="end_date" value="{{ deal.end_date|date:'Y-m-d' }}"><br>
+            <input type="date" class="form-control" name="created_at" value="{{ deal.created_at|date:'Y-m-d' }}"><br>
+            <select class="form-control" name="status">
+                <option value="open" {% if deal.status == 'open' %}selected{% endif %}>Открыта</option>
+                <option value="won" {% if deal.status == 'won' %}selected{% endif %}>Выиграна</option>
+                <option value="lost" {% if deal.status == 'lost' %}selected{% endif %}>Проиграна</option>
+            </select>
+            <input type="text" placeholder="Source" class="form-control" name="source" value="{{ deal.source }}"><br>
+            <input type="text" placeholder="field_1" class="form-contro_l" name="custom_field_1" value="{{ deal.field_1 }}"><br>
+            <input type="text" placeholder="field_2" class="form-contro_2" name="custom_field_2" value="{{ deal.field_2 }}"><br>
+            <span>{{ error }}</span>
+            <button class="btn btn-success text-teal-950" type="submit">Изменить</button>
+        </form>
+
+        <form method="post" action="{% url 'deal:delete_deal' deal.id %}">  
+            {% csrf_token %}
+            <button  class="btn btn-danger absolute right-0 bottom-0 mb-4 mr-4">Удалить</button> <!-- тут вызов окна удаления -->
+        </form>
+        <a class="close" href="#">&times;</a>
+    </div>    
+</div>
+{% endfor %}

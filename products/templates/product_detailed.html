@@ -1,67 +1,52 @@
-{% extends 'index.html' %}
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+  Product detailed view
+{% endblock %}
+
 {% block content %}
-<div class="relative overflow-x-auto shadow-md bg-gray-600">
-    <div class="bg-white dark:bg-gray-900">
-        <label for="table-search" class="sr-only">Search</label>
-    </div>
-    <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="p-4">
-                    <div class="flex items-center">
+<div class="flex-1 py-8 px-2">
+    {% include 'search.html' %}
+
+    <table class="w-full border-collapse border bg-white shadow-md">
+      <thead>
+          <tr class="text-xs font-sans text-center whitespace-nowrap">
+                <th class="border px-2 py-2">
+                    <div class="flex-1 items-center">
                         <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-all-search" class="sr-only">checkbox</label>
+                        <label for="checkbox-all-search" class="sr-only">Select</label>
                     </div>
                 </th>
-                <th scope="col" class="px-6 py-3">
-                    ID №
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Name
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Count
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Description
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Price
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    Action
-                </th>
+                <th class="border px-4 py-2">ID №</th>
+                <th class="border px-4 py-2">Name</th>
+                <th class="border px-4 py-2">Count</th>
+                <th class="border px-4 py-2">Description</th>
+                <th class="border px-4 py-2">Price</th>
+                <th class="border px-4 py-2">Action</th>
 
             </tr>
         </thead>
         <tbody>
-            <tr class="bg-white border-b dark:bg-gray-600 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                <td class="w-4 p-4">
-                    <div class="flex items-center">
-                        <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+            <tr class="text-sm font-sans text-center whitespace-nowrap">
+                <td class=" border px-2 py-2">
+                    <div>
+                      <input name="leads-ch" value="{{ lead.id }}" id="checkbox-table-search-{{ lead.id }}" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="checkbox-table-search-1" class="sr-only">Select</label>
                     </div>
                 </td>
-                <th scope="row" id="{{ product.id }}" class="px-6 py-4 text-base font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ product.id }}
-                </th>
-                <td class="px-6 py-4 text-base text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ product.name }}
-                </td>
-                <td class="px-6 py-4 text-base	 text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ product.count}}
-                </td>
-                <td class="px-6 py-4 text-base	 text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ product.description }}
-                </td>
-                <td class="px-6 py-4 text-base	 text-gray-900 whitespace-nowrap dark:text-white">
-                    {{ product.price }}
-                </td>
-                {% comment %} <td class="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white">
-                    <a href="{% url 'product_detail' product.id %}" class="text-blue-600 hover:underline mr-2">View</a>
-                    <a href="{% url 'product_edit' product.id %}" class="text-green-600 hover:underline mr-2">Edit</a>
-                    <a href="{% url 'product_delete' product.id %}" class="text-red-600 hover:underline">Delete</a>
-                </td>{% endcomment %}
+                <td class="border px-4 py-2">{{ product.id }}</td>
+                <td class="border px-2 py-2">{{ product.name }}</td>
+                <td class="border px-2 py-2">{{ product.count}}</td>
+                <td class="border px-2 py-2">{{ product.description }}</td>
+                <td class="border px-2 py-2">{{ product.price }}</td>
+                <td class="border px-2 py-2">
+                      <a href="#">
+                        <button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-xs px-0.5 py-0.5 text-center">
+                          Delete
+                        </button>
+                      </a>
+                    </td>
             </tr>
         </tbody>
     </table>

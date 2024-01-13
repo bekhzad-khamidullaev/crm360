@@ -1,0 +1,42 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+  Leads list
+{% endblock %}
+
+{% block content %}
+<div class="flex-1 p-8 px-2">
+
+    <table class="py-8 w-full border-collapse border bg-white shadow-md">
+        <thead>
+            <tr class="text-xs font-sans text-center whitespace-nowrap">
+                  <th class="border px-4 py-2">Lead ID</th>
+                  <th class="border px-4 py-2">Product name</th>
+                  <th class="border px-4 py-2">Customer</th>
+                  <th class="border px-4 py-2">Email</th>
+                  <th class="border px-4 py-2">Source</th>
+                  <th class="border px-4 py-2">Contact Date</th>
+                  <th class="border px-4 py-2">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-sm font-sans text-center whitespace-nowrap">
+                <td class="border px-2 py-2">{{ lead.pk }}</td>
+                <td class="border px-2 py-2">{{ lead.product }}</td>
+                <td class="border px-2 py-2">{{ lead.first_name }} {{ lead.last_name }}</td>
+                <td class="border px-2 py-2">{{ lead.email }}</td>
+                <td class="border px-2 py-2">{{ lead.source }}</td>
+                <td class="border px-2 py-2">{{ lead.contact_date }}</td>
+                <td class="border px-2 py-2">
+                      <a href="#">
+                        <button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-xs px-0.5 py-0.5 text-center">
+                          Delete
+                        </button>
+                      </a>
+                    </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
