@@ -1,0 +1,118 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+  Organizations list
+  {% endblock %}
+
+  {% block content %}
+  
+  <!-- <div class="flex-1 py-2 px-2">
+    <table class="w-full rounded-md border-collapse border bg-white shadow-md">
+        <thead>
+            <tr class="text-xs font-sans text-center whitespace-nowrap">
+                <th class="border px-2 py-2">
+                    <div class="flex items-center">
+                        <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="checkbox-all-search" class="sr-only">Select All</label>
+                    </div>
+                </th>
+                <th class="border px-2 py-2">ID</th>
+                <th class="border px-2 py-2">Name</th>
+                <th class="border px-2 py-2">Description</th>
+                <th class="border px-2 py-2">Industry</th>
+                <th class="border px-2 py-2">Website</th>
+                <th class="border px-2 py-2">Email</th>
+                <th class="border px-2 py-2">Phone</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-sm font-sans text-center whitespace-nowrap hover:bg-gray-400">
+                <td class="border px-2 py-2">
+                    <div>
+                        <input name="companies-ch" value="{{ company.id }}" id="checkbox-table-search-{{ company.id }}" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="checkbox-table-search-{{ company.id }}" class="sr-only">Select</label>
+                    </div>
+                </td>
+                <td class="border px-2 py-2">{{ company.id }}</td>
+                <td class="border px-2 py-2">{{ company.name }}</td>
+                <td class="border px-2 py-2">{{ company.description }}</td>
+                <td class="border px-2 py-2">{{ company.industry }}</td>
+                <td class="border px-2 py-2">
+                    <a href="{{ company.website }}" target="_blank" class="text-blue-500 hover:underline">{{ company.website }}</a>
+                </td>
+                <td class="border px-2 py-2">{{ company.email }}</td>
+                <td class="border px-2 py-2">{{ company.phone }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+
+
+<div class="flex-1 py-2 px-2">
+    {% include 'navbar.html' %}
+    <div class="mt-2 border-t border-gray-100">
+      <dl class="divide-y divide-gray-100">
+        <div class="px-2 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt class="text-sm font-medium leading-6 text-gray-900">Name</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ company.name }}</dd>
+        </div>
+        <div class="px-2 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+            <dt class="text-sm font-medium leading-6 text-gray-900">ID in database</dt>
+            <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ company.pk }}</dd>
+        </div>
+        <div class="px-2 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">Description</dt>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ company.description }}</dd>
+        </div>
+        <div class="px-2 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">Industry</dt>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0">{{ company.industry }}</dd>
+        </div>
+        <div class="px-2 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">Website</dt>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><a href="{{ company.website }}" target="_blank" class="text-blue-500 hover:underline">{{ company.website }}</a></dd>
+        </div>
+        <div class="px-2 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">Phone</dt>
+          <dd class="mt-1 text-sm leading-6 text-gray-700 sm:col-span-2 sm:mt-0"><a href="tel:{{ company.phone }}">{{ company.phone }}</a></dd>
+        </div>
+        <div class="px-2 py-2 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
+          <dt class="text-sm font-medium leading-6 text-gray-900">Attachments</dt>
+          <dd class="mt-2 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+            <ul role="list" class="divide-y divide-gray-100 rounded-md border border-gray-200">
+              <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
+                <div class="flex w-0 flex-1 items-center">
+                  <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
+                  </svg>
+                  <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                    <span class="truncate font-medium">resume_back_end_developer.pdf</span>
+                    <span class="flex-shrink-0 text-gray-400">2.4mb</span>
+                  </div>
+                </div>
+                <div class="ml-4 flex-shrink-0">
+                  <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>
+                </div>
+              </li>
+              <li class="flex items-center justify-between py-4 pl-4 pr-5 text-sm leading-6">
+                <div class="flex w-0 flex-1 items-center">
+                  <svg class="h-5 w-5 flex-shrink-0 text-gray-400" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                    <path fill-rule="evenodd" d="M15.621 4.379a3 3 0 00-4.242 0l-7 7a3 3 0 004.241 4.243h.001l.497-.5a.75.75 0 011.064 1.057l-.498.501-.002.002a4.5 4.5 0 01-6.364-6.364l7-7a4.5 4.5 0 016.368 6.36l-3.455 3.553A2.625 2.625 0 119.52 9.52l3.45-3.451a.75.75 0 111.061 1.06l-3.45 3.451a1.125 1.125 0 001.587 1.595l3.454-3.553a3 3 0 000-4.242z" clip-rule="evenodd" />
+                  </svg>
+                  <div class="ml-4 flex min-w-0 flex-1 gap-2">
+                    <span class="truncate font-medium">coverletter_back_end_developer.pdf</span>
+                    <span class="flex-shrink-0 text-gray-400">4.5mb</span>
+                  </div>
+                </div>
+                <div class="ml-4 flex-shrink-0">
+                  <a href="#" class="font-medium text-indigo-600 hover:text-indigo-500">Download</a>
+                </div>
+              </li>
+            </ul>
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+{% endblock %}

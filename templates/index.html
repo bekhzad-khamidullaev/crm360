@@ -20,10 +20,10 @@
 
 <body class="font-sans bg-gray-100">
     {% if user.is_authenticated %}
-    <div class="flex h-screen">
-
-        <!-- Left Sidebar -->
-        <div class="w-35 bg-white dark:bg-gray-300">
+    <div x-data="{ sidebarOpen: true }" class="flex overflow-x-hidden h-screen">
+        
+        
+        <div class="flex-shrink-0 w-35 flex flex-col border-r transition-all duration-300" :class="{ '-ml-35': !sidebarOpen }">
             <div class="p-2 flex items-center justify-between">
                 <a href="{% url 'index' %}" class="flex items-center text-2xl font-semibold text-blue-500">
                     <img class="w-8 h-8 mr-2"
@@ -55,6 +55,7 @@
             </div>
         </div>
         {% block content %}
+        
         {% endblock %}
  
 

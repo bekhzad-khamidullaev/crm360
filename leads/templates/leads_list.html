@@ -7,43 +7,44 @@
 
 {% block content %}
 <div class="flex-1 py-2 px-2">
-    {% include 'search.html' %}
+  {% include 'navbar.html' %}
+  {% include 'search.html' %}
 
     <table class="w-full rounded-md border-collapse border bg-white shadow-md">
       <thead>
           <tr class="text-xs font-sans text-center whitespace-nowrap">
-                  <th class="border px-2 py-2">
+                  <th class="border px-2 py-1">
                       <div class="flex-1 items-center">
                         <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="checkbox-all-search" class="sr-only">Select</label>
                       </div>
                   </th>
-                  <th class="border px-2 py-2">Lead ID</th>
-                  <th class="border px-2 py-2">Product name</th>
-                  <th class="border px-2 py-2">Customer</th>
-                  <th class="border px-2 py-2">Email</th>
-                  <th class="border px-2 py-2">Source</th>
-                  <th class="border px-2 py-2">Contact Date</th>
-                  <th class="border px-2 py-2">Action</th>
+                  <th class="border px-2 py-1">Lead ID</th>
+                  <th class="border px-2 py-1">Product name</th>
+                  <th class="border px-2 py-1">Customer</th>
+                  <th class="border px-2 py-1">Email</th>
+                  <th class="border px-2 py-1">Source</th>
+                  <th class="border px-2 py-1">Contact Date</th>
+                  <th class="border px-2 py-1">Action</th>
             </tr>
         </thead>
         <tbody>
             {% for lead in leads %}
             
             <tr class="text-sm font-sans text-center whitespace-nowrap hover:bg-gray-400">
-                <td class=" border px-2 py-2">
+                <td class=" border px-2 py-1">
                     <div>
                       <input name="leads-ch" value="{{ lead.id }}" id="checkbox-table-search-{{ lead.id }}" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                       <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
                     </div>
                 </td>
-                <td class="border px-2 py-2"><a href="{% url 'lead_detail' lead.id %}">{{ lead.pk }}</a></td>
-                <td class="border px-2 py-2"><a href="{% url 'lead_detail' lead.id %}">{{ lead.product }}</a></td>
-                <td class="border px-2 py-2"><a href="{% url 'lead_detail' lead.id %}">{{ lead.first_name }} {{ lead.last_name }}</a></td>
-                <td class="border px-2 py-2"><a href="{% url 'lead_detail' lead.id %}">{{ lead.email }}</a></td>
-                <td class="border px-2 py-2"><a href="{% url 'lead_detail' lead.id %}">{{ lead.source }}</a></td>
-                <td class="border px-2 py-2"><a href="{% url 'lead_detail' lead.id %}">{{ lead.contact_date }}</a></td>
-                <td class="border px-2 py-2">
+                <td class="border px-2 py-1"><a href="{% url 'lead_detail' lead.id %}">{{ lead.pk }}</a></td>
+                <td class="border px-2 py-1"><a href="{% url 'lead_detail' lead.id %}">{{ lead.product }}</a></td>
+                <td class="border px-2 py-1"><a href="{% url 'lead_detail' lead.id %}">{{ lead.first_name }} {{ lead.last_name }}</a></td>
+                <td class="border px-2 py-1"><a href="{% url 'lead_detail' lead.id %}">{{ lead.email }}</a></td>
+                <td class="border px-2 py-1"><a href="{% url 'lead_detail' lead.id %}">{{ lead.source }}</a></td>
+                <td class="border px-2 py-1"><a href="{% url 'lead_detail' lead.id %}">{{ lead.contact_date }}</a></td>
+                <td class="border px-2 py-1">
                     <a href="{% url 'lead_detail' lead.id %}">
                         <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-md text-xs px-1 py-1 text-center">
                           View
@@ -59,5 +60,22 @@
             {% endfor %}
         </tbody>
     </table>
+    <div class="py-2 flex justify-center">
+      <div class="pagination">
+        <span class="step-links">
+          {% if leads.has_previous %}
+            <a href="?page=1&search={{ request.GET.search }}" class="px-2 py-1 inset-y-0 end-0 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm text-white">&laquo; first</a>
+            <a href="?page={{ leads.previous_page_number }}&search={{ request.GET.search }}" class="px-2 py-1 inset-y-0 end-0 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm text-white">previous</a>
+          {% endif %}
+          <span class="current-page">
+            Page {{ leads.number }} of {{ leads.paginator.num_pages }}.
+          </span>
+          {% if leads.has_next %}
+            <a href="?page={{ leads.next_page_number }}&search={{ request.GET.search }}" class="px-2 py-1 inset-y-0 end-0 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm text-white">next</a>
+            <a href="?page={{ leads.paginator.num_pages }}&search={{ request.GET.search }}" class="px-2 py-1 inset-y-0 end-0 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm text-white">last &raquo;</a>
+          {% endif %}
+        </span>
+      </div>
+    </div>
 </div>
 {% endblock %}

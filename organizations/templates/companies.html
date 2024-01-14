@@ -1,0 +1,70 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block title %}
+  Organizations list
+{% endblock %}
+
+  {% block content %}
+  <div class="flex-1 py-2 px-2">
+    {% include 'navbar.html' %}
+    {% include 'search.html' %}
+    <table class="w-full rounded-md border-collapse border bg-white shadow-md">
+        <thead>
+            <tr class="text-xs font-sans text-center whitespace-nowrap">
+                <th class="border px-2 py-1">
+                    <div class="flex-1 items-center">
+                        <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="checkbox-all-search" class="sr-only">Select All</label>
+                    </div>
+                </th>
+                <th class="border px-2 py-1">ID</th>
+                <th class="border px-2 py-1">Name</th>
+                <th class="border px-2 py-1">Phone</th>
+                <th class="border px-2 py-1">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for company in companies %}
+            <tr class="text-sm font-sans text-center whitespace-nowrap hover:bg-gray-400">
+                <td class="border px-2 py-1">
+                    <div>
+                        <input name="companies-ch" value="{{ company.id }}" id="checkbox-table-search-{{ company.id }}" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                        <label for="checkbox-table-search-{{ company.id }}" class="sr-only">Select</label>
+                    </div>
+                </td>
+                <td class="border px-2 py-1">{{ company.id }}</td>
+                <td class="border px-2 py-1">{{ company.name }}</td>
+                <td class="border px-2 py-1">{{ company.phone }}</td>
+                <td class="border px-2 py-1">
+                    <a href="{% url 'company_detailed' company.id %}">
+                        <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-md text-xs px-1 py-1 text-center">View</button>
+                    </a>
+                    <a href="#">
+                        <button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-md text-xs px-1 py-1 text-center">Delete</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+    <div class="py-2 flex justify-center">
+        <div class="pagination">
+          <span class="step-links">
+            {% if companies.has_previous %}
+              <a href="?page=1&search={{ request.GET.search }}" class="px-2 py-1 inset-y-0 end-0 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm text-white">&laquo; first</a>
+              <a href="?page={{ companies.previous_page_number }}&search={{ request.GET.search }}" class="px-2 py-1 inset-y-0 end-0 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm text-white">previous</a>
+            {% endif %}
+            <span class="current-page">
+              Page {{ companies.number }} of {{ companies.paginator.num_pages }}.
+            </span>
+            {% if companies.has_next %}
+              <a href="?page={{ companies.next_page_number }}&search={{ request.GET.search }}" class="px-2 py-1 inset-y-0 end-0 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm text-white">next</a>
+              <a href="?page={{ companies.paginator.num_pages }}&search={{ request.GET.search }}" class="px-2 py-1 inset-y-0 end-0 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm text-white">last &raquo;</a>
+            {% endif %}
+          </span>
+        </div>
+      </div>
+</div>
+{% endblock %}

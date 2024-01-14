@@ -1,13 +1,29 @@
-from django.shortcuts import render, get_object_or_404
 from .models import Lead
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
+from django.core.paginator import Paginator
+from django.shortcuts import render, get_object_or_404, redirect
+from django.db.models import Q
 
 
 
 def leads(request):
     leads = Lead.objects.all()
-    return render(request, 'leads_list.html', {'leads': leads})
+    search_query = request.GET.get('search')
+    if search_query:
+        leads = leads.filter(
+            Q(first_name__icontains=search_query) |
+            Q(last_name__icontains=search_query) |
+            Q(email__icontains=search_query) |
+            Q(notes__icontains=search_query)
+            # Q(company__icontains=search_query) |
+            # Q(product__icontains=search_query)
+        )
+
+    paginator = Paginator(leads, 13)
+    page_number = request.GET.get('page')
+    page_items = paginator.get_page(page_number)
+    return render(request, 'leads_list.html', {'leads': page_items})
 
 
 def lead_detail(request, pk):
