@@ -1,21 +1,59 @@
-# CRM360
+# CRM360 - Django Project
 
-CRM360 is a comprehensive Customer Relationship Management (CRM) system built on the Django web framework. It aims to streamline and enhance your business's interactions with customers, providing a flexible and customizable solution to manage customer data, track communication, and improve overall customer satisfaction.
+CRM360 is a Django-based Customer Relationship Management (CRM) system that helps businesses manage their interactions with customers and improve overall customer satisfaction.
 
 ## Features
 
-- **User-friendly Interface:** Intuitive and easy-to-use interface for efficient navigation and interaction.
-- **Customer Management:** Store and manage customer information, including contact details, preferences, and interactions.
-- **Communication Tracking:** Keep a record of all customer interactions, emails, calls, and meetings to maintain a comprehensive communication history.
-- **Task Management:** Create, assign, and track tasks related to customer interactions, ensuring nothing falls through the cracks.
-- **Reporting and Analytics:** Gain insights into customer behavior, sales performance, and other key metrics through customizable reports and analytics.
-- **Customization:** Tailor the CRM system to meet your business needs with customizable fields, forms, and workflows.
+- **Customer Management**: Easily add, edit, and delete customer records.
+- **Lead Tracking**: Keep track of potential leads and their status in the sales pipeline.
+- **Communication History**: Record and view interactions and communication history with customers.
+- **Task Management**: Assign tasks, set deadlines, and manage your team's workflow.
+- **User Authentication**: Secure user authentication and access control.
 
-## Installation
+## Getting Started
 
-Follow these steps to set up CRM360 on your local machine:
+### Prerequisites
+
+- Python 3.x
+- Django 3.x
+- Virtualenv (optional but recommended)
+
+### Installation
 
 1. Clone the repository:
 
    ```bash
    git clone https://github.com/bekhzad-khamidullaev/crm360.git
+
+2. Navigate to the project directory:
+   ```bash
+   cd crm360
+
+3. Create a virtual environment (optional but recommended):
+   ```bash
+   python -m venv venv
+
+4. Activate the virtual environment:
+   On Windows:
+   ```bash
+   venv\Scripts\activate
+   On Unix or MacOS:
+   ```bash
+   source venv/bin/activate
+
+5.
+   ```bash
+
+
+6.
+   ```bash
+
+7.
+   ```bash
+
+8.
+   ```bash
+   
+
+9.
+   ```bash
