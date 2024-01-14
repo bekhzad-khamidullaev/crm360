@@ -1,47 +1,45 @@
 {% extends "index.html" %}
-{% load static %}
-
 {% block title %}
   Products list
 {% endblock %}
 
 {% block content %}
 <div class="flex-1 py-2 px-2">
+    {% include 'navbar.html' %}
     {% include 'search.html' %}
-
     <table class="w-full rounded-md border-collapse border bg-white shadow-md">
       <thead>
           <tr class="text-xs font-sans text-center whitespace-nowrap">
-                <th class="border px-2 py-2">
+                <th class="border px-2 py-1">
                       <div class="flex-1 items-center">
                         <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                         <label for="checkbox-all-search" class="sr-only">Select</label>
                       </div>
                 </th>
-                <th class="border px-2 py-2">ID №</th>
-                <th class="border px-2 py-2">Name</th>
-                <th class="border px-2 py-2">Count</th>
-                <th class="border px-2 py-2">Description</th>
-                <th class="border px-2 py-2">Price</th>
-                <th class="border px-2 py-2">Action</th>
+                <th class="border px-2 py-1">ID №</th>
+                <th class="border px-2 py-1">Name</th>
+                <th class="border px-2 py-1">Count</th>
+                <th class="border px-2 py-1">Description</th>
+                <th class="border px-2 py-1">Price</th>
+                <th class="border px-2 py-1">Action</th>
 
             </tr>
         </thead>
         <tbody>
             {% for product in products %}
             <tr class="text-sm font-sans text-center whitespace-nowrap hover:bg-gray-400">
-                <td class=" border px-2 py-2">
+                <td class=" border px-2 py-1">
                     <div>
                       <input name="checkbox-ch" value="{{ lead.id }}" id="checkbox-table-search-{{ product.pk }}" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                       <label for="checkbox-table-search-1" class="sr-only">Select</label>
                     </div>
                 </td>
-                <td class="border px-2 py-2">{{ product.id }}</td>
-                <td class="border px-2 py-2">{{ product.name }}</td>
-                <td class="border px-2 py-2">{{ product.count}}</td>
-                <td class="border px-2 py-2">{{ product.description }}</td>
-                <td class="border px-2 py-2">{{ product.price }}</td>
-                <td class="border px-2 py-2">
+                <td class="border px-2 py-1">{{ product.id }}</td>
+                <td class="border px-2 py-1">{{ product.name }}</td>
+                <td class="border px-2 py-1">{{ product.count}}</td>
+                <td class="border px-2 py-1">{{ product.description }}</td>
+                <td class="border px-2 py-1">{{ product.price }}</td>
+                <td class="border px-2 py-1">
                     <a href="{% url 'product_detail' product.pk %}">
                         <button type="button" class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 shadow-lg shadow-blue-500/50 dark:shadow-lg dark:shadow-blue-800/80 font-medium rounded-md text-xs px-1 py-1 text-center">
                           View

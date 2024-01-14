@@ -1,0 +1,80 @@
+<form method="post" class="mb-4 p-4 bg-white shadow-md rounded-md">
+    {% csrf_token %}
+
+    <!-- Description Field -->
+    <div class="mb-4">
+        <label for="{{ form.description.id_for_label }}" class="block text-sm font-medium text-gray-700">
+            Description
+        </label>
+        {{ form.description }}
+    </div>
+
+    <!-- Status Field -->
+    <div class="mb-4">
+        <label for="{{ form.status.id_for_label }}" class="block text-sm font-medium text-gray-700">
+            Status
+        </label>
+        {{ form.status }}
+    </div>
+
+    <!-- Deadline Field -->
+    <div class="mb-4">
+        <label for="{{ form.deadline.id_for_label }}" class="block text-sm font-medium text-gray-700">
+            Deadline
+        </label>
+        {{ form.deadline }}
+    </div>
+
+    <!-- Contact Field -->
+    <div class="mb-4">
+        <label for="{{ form.contact.id_for_label }}" class="block text-sm font-medium text-gray-700">
+            Contact
+        </label>
+        {{ form.contact }}
+    </div>
+
+    <!-- Company Field -->
+    <div class="mb-4">
+        <label for="{{ form.company.id_for_label }}" class="block text-sm font-medium text-gray-700">
+            Company
+        </label>
+        {{ form.company }}
+    </div>
+
+    <!-- Assigned To Field -->
+    <div class="mb-4">
+        <label for="{{ form.assigned_to.id_for_label }}" class="block text-sm font-medium text-gray-700">
+            Assigned To
+        </label>
+        {{ form.assigned_to }}
+    </div>
+
+    <!-- Probability Field -->
+    <div class="mb-4">
+        <label for="{{ form.probability.id_for_label }}" class="block text-sm font-medium text-gray-700">
+            Probability
+        </label>
+        {{ form.probability }}
+    </div>
+
+    <!-- Deal Value Field -->
+    <div class="mb-4">
+        <label for="{{ form.deal_value.id_for_label }}" class="block text-sm font-medium text-gray-700">
+            Deal Value
+        </label>
+        {{ form.deal_value }}
+    </div>
+
+    <!-- Closing Date Field -->
+    <div class="mb-4">
+        <label for="{{ form.closing_date.id_for_label }}" class="block text-sm font-medium text-gray-700">
+            Closing Date
+        </label>
+        {{ form.closing_date }}
+    </div>
+
+    <!-- Submit Button -->
+    <div class="flex items-center">
+        <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded">Create Deal</button>
+    </div>
+</form>

@@ -1,34 +1,25 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import Deal
 from .forms import DealForm
-from django.views.generic import DeleteView
+from django.views.decorators.http import require_POST
+from django.core.paginator import Paginator
+from django.db.models import Q
     
-def index(request):
-    error = ''
-    if request.method == 'POST':
-        form = DealForm(request.POST)
-        
-        if form.is_valid():
-            form.save()
-            return redirect('/deals/')
-        else:
-            error = "Неверная форма"
-            
+def deals(request):
     deals = Deal.objects.all()
-    
-    form = DealForm()
-    
-    date = {
-        'deals': deals,
-        'form': form,
-        'error': error,
-    }
-    
-    search_title = request.GET.get('search_title', '') # Поиск
-    if search_title:
-        deal = deals.filter(Name__icontains=search_title)
-        
-    return render(request, 'deals.html', date)
+    search_query = request.GET.get('search')
+    if search_query:
+        deals = deals.filter(
+            Q(description__icontains=search_query) |
+            Q(company__icontains=search_query) |
+            Q(assigned_to__icontains=search_query) |
+            Q(status__icontains=search_query)
+        )
+
+    paginator = Paginator(deals, 13)
+    page_number = request.GET.get('page')
+    page_items = paginator.get_page(page_number)
+    return render(request, 'deals.html', {'deals': page_items})
 
 def delete_deal(request, deal_id):
     deal = get_object_or_404(Deal, id=deal_id)

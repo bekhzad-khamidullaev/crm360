@@ -5,50 +5,66 @@
   Deals list
 {% endblock %}
 
-{% block content %}
-<div class="flex-1 py-2 px-2">
-    {% include 'search.html' %}
-
-    <table class="w-full rounded-md border-collapse border bg-white shadow-md">
-      <thead>
-          <tr class="text-xs font-sans text-center whitespace-nowrap">
-                <th class="border px-2 py-2">
-                    <div class="flex-1 items-center">
-                        <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                        <label for="checkbox-all-search" class="sr-only">Select</label>
-                    </div>
-                </th>
-                <th class="border px-2 py-2">Label</th>
-                <th class="border px-2 py-2">Message</th>
-                <th class="border px-2 py-2">End date</th>
-                <th class="border px-2 py-2">Date</th>
-                <th class="border px-2 py-2">Status</th>
-                <th class="border px-2 py-2">Source</th>
-                <th class="border px-2 py-2">field-1</th>
-                <th class="border px-2 py-2">field-2</th>
+  {% block content %}
+    <div class="flex-1 py-2 px-2">
+      {% include 'navbar.html' %}
+      {% include 'search.html' %}
+      <table class="w-full rounded-md border-collapse border bg-white shadow-md">
+        <thead>
+            <tr class="text-xs font-sans text-center whitespace-nowrap">
+              <th class="border px-2 py-1">
+                  <div class="flex-1 items-center">
+                      <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                      <label for="checkbox-all-search" class="sr-only">Select</label>
+                  </div>
+              </th>
+              <th class="border px-2 py-1">Deal ID№</th>
+              <th class="border px-2 py-1">Deadline</th>
+              <th class="border px-2 py-1">Updated</th>
+              <th class="border px-2 py-1">Created</th>
+              <th class="border px-2 py-1">Status</th>
+              <th class="border px-2 py-1">Assigned to user</th>
+              <th class="border px-2 py-1">Probability</th>
+              <th class="border px-2 py-1">Deal value</th>
             </tr>
         </thead>    
         <tbody class="table-hover">
             {% for deal in deals %}
             <tr class="text-sm font-sans text-center whitespace-nowrap hover:bg-gray-400">
-                <td class=" border px-2 py-2">
-                    <div>
-                      <input name="leads-ch" value="{{ lead.id }}" id="checkbox-table-search-{{ lead.id }}" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                      <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                    </div>
-                  </td>
-                <td class="border px-2 py-2">{{ deal.deal_label }}</td>
-                <td class="border px-2 py-2">{{ deal.deal_message }}</td>
-                <td class="border px-2 py-2">{{ deal.end_date }}</td>
-                <td class="border px-2 py-2">{{ deal.created_at }}</td>
-                <td class="border px-2 py-2">{{ deal.status }}</td>
-                <td class="border px-2 py-2">{{ deal.source }}</td>
-                <td class="border px-2 py-2">{{ deal.custom_field_1 }}</td>
-                <td class="border px-2 py-2">{{ deal.custom_field_2 }}</td>
+              <td class=" border px-2 py-2">
+                <div>
+                  <input name="deals-ch" value="{{ lead.id }}" id="checkbox-table-search-{{ lead.id }}" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
+                  <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
+                </div>
+              </td>
+              <td class="border px-2 py-1">{{ deal.pk}}</td>
+              <td class="border px-2 py-1">{{ deal.deadline }}</td>
+              <td class="border px-2 py-1">{{ deal.updated_at}}</td>
+              <td class="border px-2 py-1">{{ deal.created_at }}</td>
+              <td class="border px-2 py-1">{{ deal.status }}</td>
+              <td class="border px-2 py-1">{{ deal.assigned_to }}</td>
+              <td class="border px-2 py-1">{{ deal.probability }}</td>
+              <td class="border px-2 py-1">{{ deal.deal_value }}</td>
             </tr>
             {% endfor %}
         </tbody>
-    </table>
-</form>
-
-{% endblock content %}
+      </table>
+      <div class="py-2 flex justify-center">
+        <div class="pagination">
+          <span class="step-links">
+            {% if deals.has_previous %}
+              <a href="?page=1&search={{ request.GET.search }}" class="px-2 py-1 inset-y-0 end-0 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm text-white">&laquo; first</a>
+              <a href="?page={{ deals.previous_page_number }}&search={{ request.GET.search }}" class="px-2 py-1 inset-y-0 end-0 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm text-white">previous</a>
+            {% endif %}
+            <span class="current-page">
+              Page {{ deals.number }} of {{ deals.paginator.num_pages }}.
+            </span>
+            {% if deals.has_next %}
+              <a href="?page={{ deals.next_page_number }}&search={{ request.GET.search }}" class="px-2 py-1 inset-y-0 end-0 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm text-white">next</a>
+              <a href="?page={{ deals.paginator.num_pages }}&search={{ request.GET.search }}" class="px-2 py-1 inset-y-0 end-0 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-md text-sm text-white">last &raquo;</a>
+            {% endif %}
+          </span>
+        </div>
+      </div>
+  </div>
+{% endblock %}
