@@ -6,10 +6,10 @@
 {% endblock %}
 
 {% block content %}
-<div class="flex-1 py-8 px-2">
+<div class="flex-1 py-2 px-2">
     {% include 'search.html' %}
 
-    <table class="w-full border-collapse border bg-white shadow-md">
+    <table class="w-full rounded-md border-collapse border bg-white shadow-md">
       <thead>
           <tr class="text-xs font-sans text-center whitespace-nowrap">
                 <th class="border px-2 py-2">
@@ -42,7 +42,7 @@
                 <td class="border px-2 py-2">{{ product.price }}</td>
                 <td class="border px-2 py-2">
                       <a href="#">
-                        <button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-xs px-0.5 py-0.5 text-center">
+                        <button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-md text-xs px-0.5 py-0.5 text-center">
                           Delete
                         </button>
                       </a>
@@ -59,7 +59,7 @@
                 </svg>
                 <span class="sr-only">Share</span>
             </button>
-            <div id="tooltip-share" role="tooltip" class="absolute z-10 invisible inline-block w-auto px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+            <div id="tooltip-share" role="tooltip" class="absolute z-10 invisible inline-block w-auto px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-md shadow-sm opacity-0 tooltip dark:bg-gray-700">
                 Share
                 <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
@@ -70,7 +70,7 @@
                 </svg>
                 <span class="sr-only">Print</span>
             </button>
-            <div id="tooltip-print" role="tooltip" class="absolute z-10 invisible inline-block w-auto px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+            <div id="tooltip-print" role="tooltip" class="absolute z-10 invisible inline-block w-auto px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-md shadow-sm opacity-0 tooltip dark:bg-gray-700">
                 Print
                 <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
@@ -81,7 +81,7 @@
                 </svg>
                 <span class="sr-only">Download</span>
             </button>
-            <div id="tooltip-download" role="tooltip" class="absolute z-10 invisible inline-block w-auto px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+            <div id="tooltip-download" role="tooltip" class="absolute z-10 invisible inline-block w-auto px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-md shadow-sm opacity-0 tooltip dark:bg-gray-700">
                 Download
                 <div class="tooltip-arrow" data-popper-arrow></div>
             </div>
@@ -92,7 +92,7 @@
                 </svg>
                 <span class="sr-only">Copy</span>
             </button>
-            <div id="tooltip-copy" role="tooltip" class="absolute z-10 invisible inline-block w-auto px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700">
+            <div id="tooltip-copy" role="tooltip" class="absolute z-10 invisible inline-block w-auto px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-md shadow-sm opacity-0 tooltip dark:bg-gray-700">
                 Copy
                 <div class="tooltip-arrow" data-popper-arrow></div>
             </div>

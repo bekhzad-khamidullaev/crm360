@@ -19,30 +19,25 @@
 </head>
 
 <body class="font-sans bg-gray-100">
+    {% if user.is_authenticated %}
     <div class="flex h-screen">
-        {% if user.is_authenticated %}
+
         <!-- Left Sidebar -->
-        <div class="w-35 bg-white shadow-md">
-            <div class="p-4 flex items-center justify-between">
+        <div class="w-35 bg-white dark:bg-gray-300">
+            <div class="p-2 flex items-center justify-between">
                 <a href="{% url 'index' %}" class="flex items-center text-2xl font-semibold text-blue-500">
                     <img class="w-8 h-8 mr-2"
                         src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="CRM360 Logo">
                     CRM360
                 </a>
-                <!-- Night Mode Toggle -->
-                <!-- <div
-                    class="relative inline-block w-10 align-middle select-none transition duration-200 ease-in">
-                    <input type="checkbox" id="nightModeToggle"
-                        class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer">
-                    <label for="nightModeToggle"
-                        class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
-                </div> -->
+
             </div>
-            <!-- Sidebar Content -->
             <div class="pl-4">
-                <div class="flex-1 justify-between">
-                    <a href="{% url 'index' %}" class="text-gray-700 mb-2">{{ request.user.first_name }}
-                        {{ request.user.last_name }}</a>
+                <div class="flex-1 justify-between pr-4 py-4">
+                    <a href="{% url 'index' %}" class="text-gray-700 mb-2">
+                        {{ request.user.first_name }}
+                        {{ request.user.last_name }}
+                    </a>
                 </div>
                 <ul class="space-2">
                     <li><a href="{% url 'leads' %}" class="text-gray-600 hover:underline">Leads</a></li>
@@ -52,59 +47,23 @@
                     <li><a href="{% url 'deal:index' %}" class="text-gray-600 hover:underline">Deals</a></li>
                     <li><a href="{% url 'products' %}" class="text-gray-600 hover:underline">Products</a></li>
                 </ul>
-                <div class="pt-8">
-                    <a href="{% url 'logout' %}" class="text-red-500 hover:underline"
-                        onclick="return confirm('Are you sure you want to logout?')">Logout</a>
-                </div>
+            </div>
+            <div class="pl-4 py-8">
+                <a href="{% url 'logout' %}" onclick="return confirm('Are you sure you want to logout?')">
+                    <button class="font-sans bg-red-600 text-white text-sm px-2 py-2 rounded-md">Logout</button>
+                </a>
             </div>
         </div>
-
         {% block content %}
-
         {% endblock %}
+ 
 
-        {% else %}
-
-        {% include 'login_page.html' %}
-
-        {% endif %}
-        <script>
-            const nightModeToggle = document.getElementById('nightModeToggle');
-            const body = document.body;
-
-            nightModeToggle.addEventListener('change', () => {
-                body.classList.toggle('dark');
-            });
-        </script>
-        <script>
-            function handleDrop(event) {
-                console.log('Dropped:', event);
-                const draggedElement = event.detail.origin;
-                const leadId = draggedElement.id.split('-')[1];
-                const newStatus = event.target.id;
-
-                console.log('Lead ID:', leadId);
-                console.log('New Status:', newStatus);
-
-                
-                // Send AJAX request to update lead status
-                htmx.ajax({
-                    url: `/update_lead_status/${leadId}/`,
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/x-www-form-urlencoded'
-                    },
-                    data: `status=${newStatus}`,
-                    success: function (response) {
-                        // Handle success response (if needed)
-                    },
-                    error: function (error) {
-                        console.error('Error updating lead status:', error);
-                    }
-                });
-            }
-        </script>
     </div>
+    {% else %}
+
+    {% include 'login_page.html' %}
+
+    {% endif %}
 </body>
 
 </html>

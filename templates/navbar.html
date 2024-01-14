@@ -1,27 +1,6 @@
-<nav class="bg-sky-900 dark:bg-neutral-900">
+<nav class="bg-blue-600 dark:bg-blue-800 rounded-md shadow-lg">
   <div class="mx-auto max-w-8xl px-2 sm:px-6 lg:px-8">
-    <div class="relative flex px-2 py-2 h-10 items-center justify-between px-2 text-center">
-      <div class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
-        <div class="flex items-center text-neutral-800 dark:text-neutral-200">
-          <a href="{% url 'leads' %}" class="flex items-center text-2xl font-bold text-white dark:text-gray-300">
-            <img class="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo">
-            CRM360
-          </a>
-        </div>
-        <div class="hidden sm:ml-6 sm:block">
-          <div class="flex space-x-4">
-            <a href="{% url 'leads' %}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Leads</a>
-            <a href="{% url 'contacts' %}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Contacts</a>
-            <a href="{% url 'organizations' %}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Organizations</a>
-            <a href="{% url 'deal:index' %}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Deals</a>
-            <a href="{% url 'products' %}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Products</a>
-
-          </div>
-        </div>
+      <div class="relative flex py-2 h-10 items-center justify-end text-center">
       </div>
-      <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-        <a href="{% url 'logout' %}" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Logout</a>
-      </div>
-    </div>
   </div>
 </nav>

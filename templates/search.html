@@ -1,13 +1,14 @@
-<div class="flex items-center justify-between mb-6">
+{% include 'navbar.html' %}
+<div class="flex items-center justify-between mb-2">
     <div class="relative w-64">
-        <input type="text" placeholder="Search" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:border-blue-500">
-        <button class="absolute top-0 right-0 mt-3 mr-4">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <input type="text" placeholder="Search" class="w-full mt-2 px-4 py-1 border shadow-md rounded-lg focus:outline-none focus:border-blue-500">
+        <button class="absolute top-0 right-0 mt-2 mr-2">
+            <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 19a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h5m4-4h6a2 2 0 012 2v12a2 2 0 01-2 2h-6"/>
-            </svg>
+            </svg> -->
         </button>
     </div>
 
-    <button class="bg-blue-500 text-white px-6 py-2 rounded-lg">Add</button>
+    <button class="shadow-blue-800 bg-blue-500 text-white text-sm px-6 mr-2 py-1 rounded-md">Add</button>
 </div>

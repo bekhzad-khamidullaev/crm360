@@ -1,14 +1,13 @@
 {% extends "index.html" %}
 {% load static %}
-
 {% block title %}
   Leads list
 {% endblock %}
 
 {% block content %}
-<div class="flex-1 p-8 px-2">
-
-    <table class="py-8 w-full border-collapse border bg-white shadow-md">
+<div class="flex-1 p-2 px-2">
+  {% include 'navbar.html' %}
+    <table class="py-8 mt-2 rounded-md w-full border-collapse border bg-white shadow-md">
         <thead>
             <tr class="text-xs font-sans text-center whitespace-nowrap">
                   <th class="border px-4 py-2">Lead ID</th>
@@ -30,7 +29,7 @@
                 <td class="border px-2 py-2">{{ lead.contact_date }}</td>
                 <td class="border px-2 py-2">
                       <a href="#">
-                        <button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-lg text-xs px-0.5 py-0.5 text-center">
+                        <button type="button" class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 shadow-lg shadow-red-500/50 dark:shadow-lg dark:shadow-red-800/80 font-medium rounded-md text-xs px-0.5 py-0.5 text-center">
                           Delete
                         </button>
                       </a>
