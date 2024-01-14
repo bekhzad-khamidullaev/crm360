@@ -11,12 +11,12 @@ def deals(request):
     if search_query:
         deals = deals.filter(
             Q(description__icontains=search_query) |
-            Q(company__icontains=search_query) |
-            Q(assigned_to__icontains=search_query) |
+            # Q(company__icontains=search_query) |
+            # Q(assigned_to__icontains=search_query) |
             Q(status__icontains=search_query)
         )
 
-    paginator = Paginator(deals, 13)
+    paginator = Paginator(deals, 15)
     page_number = request.GET.get('page')
     page_items = paginator.get_page(page_number)
     return render(request, 'deals.html', {'deals': page_items})
