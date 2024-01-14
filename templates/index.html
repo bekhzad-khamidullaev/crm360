@@ -25,21 +25,21 @@
         
         <div class="flex-shrink-0 w-35 flex flex-col border-r transition-all duration-300" :class="{ '-ml-35': !sidebarOpen }">
             <div class="p-2 flex items-center justify-between">
-                <a href="{% url 'index' %}" class="flex items-center text-2xl font-semibold text-blue-500">
-                    <img class="w-8 h-8 mr-2"
+                <a href="{% url 'index' %}" class="flex-1 shadow-gray-400 shadow-md hover:shadow-gray-400 hover:shadow-lg rounded-md items-center text-2xl font-semibold text-blue-500">
+                    <img class="w-6 h-6 mr-2"
                         src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="CRM360 Logo">
                     CRM360
                 </a>
 
             </div>
-            <div class="pl-4">
-                <div class="flex-1 justify-between pr-4 py-4">
-                    <a href="{% url 'index' %}" class="text-gray-700 mb-2">
-                        {{ request.user.first_name }}
+            <div class="p-2">
+                <div class="flex-1 justify-between border rounded-md shadow-gray-400 shadow-md hover:shadow-gray-400 hover:shadow-lg px-2 py-2">
+                    <a href="{% url 'index' %}" class="text-gray-700">
+                        {{ request.user.first_name }}<br>
                         {{ request.user.last_name }}
                     </a>
                 </div>
-                <ul class="space-2">
+                <ul class="flex-1 mt-2 justify-between border rounded-md shadow-gray-400 shadow-md hover:shadow-gray-400 hover:shadow-lg px-2 py-2">
                     
                     <li><a href="{% url 'leads' %}" class="text-gray-600 hover:underline">Leads</a></li>
                     <li><a href="{% url 'organizations' %}" class="text-gray-600 hover:underline">Organizations</a>
@@ -51,7 +51,7 @@
             </div>
             <div class="pl-4 py-8">
                 <a href="{% url 'logout' %}" onclick="return confirm('Are you sure you want to logout?')">
-                    <button class="font-sans bg-red-600 text-white text-sm px-2 py-2 rounded-md">Logout</button>
+                    <button class="shadow-gray-400 shadow-md hover:shadow-gray-400 hover:shadow-lg font-sans bg-red-600 text-white text-sm px-2 py-2 rounded-md">Logout</button>
                 </a>
             </div>
         </div>
